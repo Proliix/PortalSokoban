@@ -144,8 +144,8 @@ namespace PortalSokoban
         }
         public void Draw(SpriteBatch batch, Vector2 camOffset)
         {
-            batch.Draw(TWallTile0, new Vector2(30, 30), Color.White);
-            /*
+            //batch.Draw(TWallTile0, new Vector2(30, 30), Color.White);
+            ///*
             int y = -1;
             for (int i = 0; i < gridWidthX * gridHeightY; i++)
             {
@@ -153,16 +153,16 @@ namespace PortalSokoban
                 if (x == 0) y += 1;
 
                 Vector2 position = new Vector2(x * CELL_WIDTH, y * CELL_HEIGHT);
-                position += camOffset;
+                //position += camOffset;
 
-                batch.Draw(ground, position, Color.White);
+                batch.Draw(TWallTile0, position, Color.White);
 
                 if ((x + y) % 2 == 0)
                 {
-                    batch.Draw(black, position, new Color(1, 1, 1, alpha: 0.15f));
+                    batch.Draw(TWallTile0, position, new Color(0, 0, 0, alpha: 0.15f));
                 }
             }
-            */
+            //*/
         }
         private char[,] createLvl1()
         {

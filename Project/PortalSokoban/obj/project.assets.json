@@ -7530,24 +7530,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Henrik Nyström\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\lucas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\YRGO\\Monogames\\Portal\\PortalSokoban\\Project\\PortalSokoban\\PortalSokoban.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\Documents\\GitHub\\PortalSokuban\\PortalSokoban\\Project\\PortalSokoban\\PortalSokoban.csproj",
       "projectName": "PortalSokoban",
-      "projectPath": "D:\\YRGO\\Monogames\\Portal\\PortalSokoban\\Project\\PortalSokoban\\PortalSokoban.csproj",
-      "packagesPath": "C:\\Users\\Henrik Nyström\\.nuget\\packages\\",
-      "outputPath": "D:\\YRGO\\Monogames\\Portal\\PortalSokoban\\Project\\PortalSokoban\\obj\\",
+      "projectPath": "C:\\Users\\lucas\\Documents\\GitHub\\PortalSokuban\\PortalSokoban\\Project\\PortalSokoban\\PortalSokoban.csproj",
+      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lucas\\Documents\\GitHub\\PortalSokuban\\PortalSokoban\\Project\\PortalSokoban\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Henrik Nyström\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
