@@ -14,6 +14,7 @@ namespace PortalSokoban
         const int GAME_UPSCALE_FACTOR = 3;
 
 
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public PortalSokobanGame()
@@ -31,6 +32,7 @@ namespace PortalSokoban
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            board = new Board(Content,32,18);
         }
 
         protected override void LoadContent()
@@ -54,9 +56,12 @@ namespace PortalSokoban
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+
             // TODO: Add your drawing code here
 
+            board.Draw(_spriteBatch, new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2));
             base.Draw(gameTime);
+            
         }
     }
 }
