@@ -80,3 +80,4 @@ C:\Users\lucas\Documents\GitHub\PortalSokuban\PortalSokoban\Project\PortalSokoba
 =======
 D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\bin\Debug\net6.0-windows\Content\sprite\portal_wall_tile_0.xnb
 >>>>>>> Stashed changes
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\bin\Debug\net6.0-windows\Content\sprite\portal_player_idle_down.xnb
