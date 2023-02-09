@@ -35,3 +35,11 @@ C:\Users\lucas\Documents\GitHub\PortalSokuban\PortalSokoban\Project\PortalSokoba
 C:\Users\lucas\Documents\GitHub\PortalSokuban\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\PortalSokoban.pdb
 C:\Users\lucas\Documents\GitHub\PortalSokuban\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\PortalSokoban.genruntimeconfig.cache
 C:\Users\lucas\Documents\GitHub\PortalSokuban\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\ref\PortalSokoban.dll
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\PortalSokoban.csproj.AssemblyReference.cache
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\PortalSokoban.GeneratedMSBuildEditorConfig.editorconfig
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\PortalSokoban.AssemblyInfoInputs.cache
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\PortalSokoban.AssemblyInfo.cs
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\PortalSokoban.csproj.CoreCompileInputs.cache
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\PortalSokoban.dll
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\refint\PortalSokoban.dll
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\PortalSokoban.pdb
