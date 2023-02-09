@@ -75,4 +75,8 @@ D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-wi
 D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\obj\Debug\net6.0-windows\ref\PortalSokoban.dll
 C:\Users\lucas\Documents\GitHub\PortalSokuban\PortalSokoban\Project\PortalSokoban\bin\Debug\net6.0-windows\Content\sprite\portal_floor_tile_1.xnb
 C:\Users\lucas\Documents\GitHub\PortalSokuban\PortalSokoban\Project\PortalSokoban\bin\Debug\net6.0-windows\Content\sprite\portal_wall_tile_0.xnb
+<<<<<<< Updated upstream
 C:\Users\lucas\Documents\GitHub\PortalSokuban\PortalSokoban\Project\PortalSokoban\bin\Debug\net6.0-windows\Content\sprite\portal_player_idle_down.xnb
+=======
+D:\YRGO\Monogames\Portal\PortalSokoban\Project\PortalSokoban\bin\Debug\net6.0-windows\Content\sprite\portal_wall_tile_0.xnb
+>>>>>>> Stashed changes
