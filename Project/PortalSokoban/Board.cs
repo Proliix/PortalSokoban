@@ -87,6 +87,7 @@ namespace PortalSokoban
         private const int TDOORCLOSE = 12;
         private const int TDOOROPEN = 13;
         private const int TPLAYER = 14;
+        private readonly Texture2D TPlayer;
         private const int TPORTAL1 = 15;
         private const int TPORTAL2 = 16;
         #endregion
@@ -102,7 +103,7 @@ namespace PortalSokoban
         private int gridWidthX;
         private int gridHeightY;
         private char[,] GRID;
-        
+
         private Int32 seed;
 
         //                                                                                      Constructor
@@ -125,22 +126,25 @@ namespace PortalSokoban
             TWallTile2 = c.Load<Texture2D>("sprite/portal_wall_tile_0");
             TWallTile3 = c.Load<Texture2D>("sprite/portal_wall_tile_0");
             TWallTile4 = c.Load<Texture2D>("sprite/portal_wall_tile_0");
+
+            TPlayer = c.Load<Texture2D>("sprite/portal_player_idle_down");
             #endregion
         }
 
         public void createLvl(int x)
         {
             if (x > MAX_LVL) return;
-            switch (x) {
-                                                        // LOAD LVL1
+            switch (x)
+            {
+                // LOAD LVL1
                 case 1:
                     createLvl1();
                     GRID = createLvl1();
                     break;
-                
-            } 
-                
-            
+
+            }
+
+
         }
         public void Draw(SpriteBatch batch, Vector2 camOffset)
         {
@@ -153,17 +157,69 @@ namespace PortalSokoban
                 if (x == 0) y += 1;
 
                 Vector2 position = new Vector2(x * CELL_WIDTH, y * CELL_HEIGHT);
+
+                switch (GRID[x, y])
+                {
+                    case WALL:
+                        batch.Draw(TWallTile0, position, Color.White);
+                        break;
+                    case GROUND:
+                        batch.Draw(TGroundTile0, position, Color.White);
+                        if ((x + y) % 2 == 0)
+                        {
+                            batch.Draw(TGroundTile0, position, new Color(0, 0, 0, alpha: 0.15f));
+                        }
+                        break;
+                    case PLAYER:
+                        batch.Draw(TGroundTile0, position, Color.White);
+                        if ((x + y) % 2 == 0)
+                        {
+                            batch.Draw(TGroundTile0, position, new Color(0, 0, 0, alpha: 0.15f));
+                        }
+                        batch.Draw(TPlayer, position, Color.White);
+                        break;
+                    default:
+                        break;
+                }
                 //position += camOffset;
 
-                batch.Draw(TWallTile0, position, Color.White);
+                //batch.Draw(TWallTile0, position, Color.White);
 
-                if ((x + y) % 2 == 0)
-                {
-                    batch.Draw(TWallTile0, position, new Color(0, 0, 0, alpha: 0.15f));
-                }
+                //if ((x + y) % 2 == 0)
+                //{
+                //    batch.Draw(TWallTile0, position, new Color(0, 0, 0, alpha: 0.15f));
+                //}
             }
             //*/
         }
+
+        private static char[,] RotateArrayClockwise(char[,] src)
+        {
+            int width;
+            int height;
+            char[,] dst;
+
+            width = src.GetUpperBound(0) + 1;
+            height = src.GetUpperBound(1) + 1;
+            dst = new char[height, width];
+
+            for (int row = 0; row < height; row++)
+            {
+                for (int col = 0; col < width; col++)
+                {
+                    int newRow;
+                    int newCol;
+
+                    newRow = col;
+                    newCol = height - (row + 1);
+
+                    dst[newCol, newRow] = src[col, row];
+                }
+            }
+
+            return dst;
+        }
+
         private char[,] createLvl1()
         {
             char[,] _grid;
@@ -188,9 +244,10 @@ namespace PortalSokoban
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
                     { 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'} };
 
+            _grid = RotateArrayClockwise(_grid);
             return _grid;
         }
-        
+
 
     }
 }

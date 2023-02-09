@@ -26,7 +26,7 @@ namespace PortalSokoban
         {
             _graphics.PreferredBackBufferHeight = GAME_HEIGHT * GAME_UPSCALE_FACTOR;
             _graphics.PreferredBackBufferWidth = GAME_WIDTH * GAME_UPSCALE_FACTOR;
-            _graphics.IsFullScreen = true;
+            //_graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
             // TODO: Add your initialization logic here
             board = new Board(Content, 32, 18);
