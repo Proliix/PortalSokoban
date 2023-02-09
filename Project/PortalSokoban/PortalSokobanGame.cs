@@ -8,10 +8,10 @@ namespace PortalSokoban
     {
 
         private Board board;
-        
-        const int GAME_WIDTH = 640;
-        const int GAME_HEIGHT = 360;
-        const int GAME_UPSCALE_FACTOR = 3;
+
+        const int GAME_WIDTH = 1920;
+        const int GAME_HEIGHT = 1080;
+        const int GAME_UPSCALE_FACTOR = 1;
 
 
 
@@ -28,11 +28,12 @@ namespace PortalSokoban
         {
             _graphics.PreferredBackBufferHeight = GAME_HEIGHT * GAME_UPSCALE_FACTOR;
             _graphics.PreferredBackBufferWidth = GAME_WIDTH * GAME_UPSCALE_FACTOR;
+            _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
             // TODO: Add your initialization logic here
 
             base.Initialize();
-            board = new Board(Content,32,18);
+            board = new Board(Content, 32, 18);
         }
 
         protected override void LoadContent()
@@ -54,14 +55,17 @@ namespace PortalSokoban
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            Matrix matrix = Matrix.CreateScale(GAME_UPSCALE_FACTOR);
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: matrix);
 
             // TODO: Add your drawing code here
 
             board.Draw(_spriteBatch, new Vector2(GAME_WIDTH / 2, GAME_HEIGHT / 2));
+            _spriteBatch.End();
             base.Draw(gameTime);
-            
+
         }
     }
 }

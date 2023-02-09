@@ -4,9 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/YRGO/Monogames/Portal/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_floor_tile_1.png</File>
+    <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_floor_tile_1.png</File>
+    <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_wall_tile_0.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
