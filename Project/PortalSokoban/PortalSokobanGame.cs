@@ -13,6 +13,8 @@ namespace PortalSokoban
         public const int GAME_HEIGHT = 1080;
         public const int GAME_UPSCALE_FACTOR = 1;
 
+        private float dt;
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         InputSystem inputSystem;
@@ -46,9 +48,9 @@ namespace PortalSokoban
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             // TODO: Add your update logic here
-            inputSystem.Update();
+            inputSystem.Update(dt);
 
             base.Update(gameTime);
         }
