@@ -87,7 +87,6 @@ namespace PortalSokoban
         private const int TDOORCLOSE = 12;
         private const int TDOOROPEN = 13;
         private const int TPLAYER = 14;
-        private readonly Texture2D TPlayer;
         private const int TPORTAL1 = 15;
         private const int TPORTAL2 = 16;
         #endregion
@@ -102,7 +101,12 @@ namespace PortalSokoban
 
         private int gridWidthX;
         private int gridHeightY;
+        private int[,] wallNums;
         private char[,] GRID;
+
+        private ContentManager c;
+
+        private List<BoardObject> objectsOnBoard;
 
         private Int32 seed;
 
@@ -112,6 +116,7 @@ namespace PortalSokoban
             GRID = new char[gridX, gridY];
             gridWidthX = gridX;
             gridHeightY = gridY;
+            this.c = c;
             createLvl(1);
             // GULP... load all textures.....
             #region
@@ -122,12 +127,11 @@ namespace PortalSokoban
             TGroundTile4 = c.Load<Texture2D>("sprite/portal_floor_tile_1");
 
             TWallTile0 = c.Load<Texture2D>("sprite/portal_wall_tile_0");
-            TWallTile1 = c.Load<Texture2D>("sprite/portal_wall_tile_0");
-            TWallTile2 = c.Load<Texture2D>("sprite/portal_wall_tile_0");
-            TWallTile3 = c.Load<Texture2D>("sprite/portal_wall_tile_0");
+            TWallTile1 = c.Load<Texture2D>("sprite/portal_wall_tile_1");
+            TWallTile2 = c.Load<Texture2D>("sprite/portal_wall_tile_2");
+            TWallTile3 = c.Load<Texture2D>("sprite/portal_wall_tile_3");
             TWallTile4 = c.Load<Texture2D>("sprite/portal_wall_tile_0");
 
-            TPlayer = c.Load<Texture2D>("sprite/portal_player_idle_down");
             #endregion
         }
 
@@ -138,7 +142,6 @@ namespace PortalSokoban
             {
                 // LOAD LVL1
                 case 1:
-                    createLvl1();
                     GRID = createLvl1();
                     break;
 
@@ -161,24 +164,16 @@ namespace PortalSokoban
                 switch (GRID[x, y])
                 {
                     case WALL:
-                        batch.Draw(TWallTile0, position, Color.White);
+                        batch.Draw(GetRandomWall(wallNums[x, y]), position, Color.White);
                         break;
                     case GROUND:
-                        batch.Draw(TGroundTile0, position, Color.White);
-                        if ((x + y) % 2 == 0)
-                        {
-                            batch.Draw(TGroundTile0, position, new Color(0, 0, 0, alpha: 0.15f));
-                        }
-                        break;
-                    case PLAYER:
-                        batch.Draw(TGroundTile0, position, Color.White);
-                        if ((x + y) % 2 == 0)
-                        {
-                            batch.Draw(TGroundTile0, position, new Color(0, 0, 0, alpha: 0.15f));
-                        }
-                        batch.Draw(TPlayer, position, Color.White);
-                        break;
                     default:
+                        batch.Draw(TGroundTile0, position, Color.White);
+                        if ((x + y) % 2 == 0)
+                        {
+                            batch.Draw(TGroundTile0, position, new Color(0, 0, 0, alpha: 0.15f));
+                        }
+
                         break;
                 }
                 //position += camOffset;
@@ -190,6 +185,12 @@ namespace PortalSokoban
                 //    batch.Draw(TWallTile0, position, new Color(0, 0, 0, alpha: 0.15f));
                 //}
             }
+
+            foreach (var item in objectsOnBoard)
+            {
+                item.Draw(batch, camOffset);
+            }
+
             //*/
         }
 
@@ -220,10 +221,51 @@ namespace PortalSokoban
             return dst;
         }
 
+        private Texture2D GetRandomWall(int wallNum)
+        {
+            switch (wallNum)
+            {
+                case 0:
+                    return TWallTile0;
+
+                case 1:
+                    return TWallTile1;
+                case 2:
+                    return TWallTile2;
+                case 3:
+                    return TWallTile3;
+
+                default:
+                    return TWallTile0;
+            }
+
+
+        }
+
+        private int[,] GetRandomIntArray(int xSize, int ySize, int maxRandom)
+        {
+            int[,] ints = new int[xSize, ySize];
+
+            Random rand = new Random();
+
+            int y = -1;
+            string debugString = "";
+            for (int i = 0; i < xSize * ySize; i++)
+            {
+                int x = i % xSize;
+                if (x == 0) { y += 1; Console.WriteLine(debugString); debugString = ""; }
+
+                ints[x, y] = rand.Next(0, maxRandom);
+                debugString += "{" + ints[x, y] + "}";
+            }
+
+            return ints;
+        }
+
         private char[,] createLvl1()
         {
             char[,] _grid;
-
+            wallNums = GetRandomIntArray(gridWidthX, gridHeightY, 4);
             _grid = new char[18, 32] {
                     { 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'},
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
@@ -245,6 +287,26 @@ namespace PortalSokoban
                     { 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'} };
 
             _grid = RotateArrayClockwise(_grid);
+            objectsOnBoard = new List<BoardObject>();
+
+            int y = -1;
+            for (int i = 0; i < gridWidthX * gridHeightY; i++)
+            {
+                int x = i % gridWidthX;
+                if (x == 0) y += 1;
+                switch (_grid[x, y])
+                {
+                    case PLAYER:
+                        objectsOnBoard.Add(new Player(x, y, this, c));
+                        break;
+                    case BOX:
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
             return _grid;
         }
 

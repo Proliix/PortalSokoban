@@ -6,9 +6,21 @@
   <SourceFiles>
     <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_floor_tile_1.png</File>
     <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_player_idle_down.png</File>
+    <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_player_idle_left.png</File>
+    <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_player_idle_right.png</File>
+    <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_player_idle_up.png</File>
     <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_wall_tile_0.png</File>
+    <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_wall_tile_1.png</File>
+    <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_wall_tile_2.png</File>
+    <File>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_wall_tile_3.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/YRGO/Monogames/Portal/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_wall_tile_0.png</SourceFile>
-  <SourceTime>2023-02-09T14:54:25.7397654+01:00</SourceTime>
-  <DestFile>D:/YRGO/Monogames/Portal/PortalSokoban/Project/PortalSokoban/Content/bin/Windows/Content/sprite/portal_wall_tile_0.xnb</DestFile>
-  <DestTime>2023-02-09T15:49:45.7424881+01:00</DestTime>
+  <SourceFile>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_wall_tile_0.png</SourceFile>
+  <SourceTime>2023-02-09T15:14:56.2088958+01:00</SourceTime>
+  <DestFile>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/bin/Windows/Content/sprite/portal_wall_tile_0.xnb</DestFile>
+  <DestTime>2023-02-10T09:03:22.70845+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

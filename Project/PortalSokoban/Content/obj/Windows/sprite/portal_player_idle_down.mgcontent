@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/sprite/portal_player_idle_down.png</SourceFile>
-  <SourceTime>2023-02-09T15:49:42.7369848+01:00</SourceTime>
+  <SourceTime>2023-02-10T08:50:32.1000688+01:00</SourceTime>
   <DestFile>C:/Users/lucas/Documents/GitHub/PortalSokuban/PortalSokoban/Project/PortalSokoban/Content/bin/Windows/sprite/portal_player_idle_down.xnb</DestFile>
-  <DestTime>2023-02-09T15:52:38.0109955+01:00</DestTime>
+  <DestTime>2023-02-10T09:36:47.9626382+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
