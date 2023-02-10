@@ -15,6 +15,7 @@ namespace PortalSokoban
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        InputSystem inputSystem;
         public PortalSokobanGame()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -29,8 +30,8 @@ namespace PortalSokoban
             //_graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
             // TODO: Add your initialization logic here
+            inputSystem = new InputSystem();
             board = new Board(Content, 32, 18);
-
             base.Initialize();
         }
 
@@ -47,6 +48,7 @@ namespace PortalSokoban
                 Exit();
 
             // TODO: Add your update logic here
+            inputSystem.Update();
 
             base.Update(gameTime);
         }
