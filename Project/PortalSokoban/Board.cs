@@ -271,27 +271,53 @@ namespace PortalSokoban
             return GRID[x, y];
         }
 
-        public bool MoveTowardDir(int xPos,int yPos,int xDir,int yDir)
+        public bool MoveTowardDir(int xPos, int yPos, int xDir, int yDir)
         {
             int newXPos = xPos + xDir;
             int newYPos = yPos + yDir;
 
-            if(newXPos >= GRID.GetLength(0) || newYPos >= GRID.GetLength(1))
+            if (newXPos >= GRID.GetLength(0) || newYPos >= GRID.GetLength(1))
                 return false;
 
             char c1 = GRID[xPos, yPos];
-            char c2 = GRID[newXPos,newYPos];
-            GRID[newXPos,newYPos] = c1;
-            GRID[xPos,yPos] = c2;
+            char c2 = GRID[newXPos, newYPos];
+            GRID[newXPos, newYPos] = c1;
+            GRID[xPos, yPos] = c2;
 
             #region Debug send board to console
+            ConsoleColor fColor = Console.ForegroundColor;
+
             int y = -1;
             string debugString = "";
             for (int i = 0; i < gridWidthX * gridHeightY; i++)
             {
                 int x = i % gridWidthX;
                 if (x == 0) { y += 1; Console.WriteLine(debugString); debugString = ""; }
-                debugString += "{" + GRID[x, y] + "}";
+
+                if (GRID[x, y] == PLAYER)
+                {
+                    Console.Write(debugString);
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write("{" + PLAYER + "}");
+                    Console.ForegroundColor = fColor;
+                    debugString = "";
+                }
+                else if (GRID[x, y] == BOX)
+                {
+                    Console.Write(debugString);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("{" + BOX + "}");
+                    Console.ForegroundColor = fColor;
+                    debugString = "";
+                }
+                else if (GRID[x, y] == WALL)
+                {
+                    debugString += "███";
+                }
+                else
+                    debugString += "{" + GRID[x, y] + "}";
+
+
 
                 if (i + 1 == gridWidthX * gridHeightY)
                     Console.WriteLine(debugString);
@@ -302,7 +328,7 @@ namespace PortalSokoban
 
         }
 
-        public BoardObject GetBoardObjAtPos(int x, int y) 
+        public BoardObject GetBoardObjAtPos(int x, int y)
         {
             for (int i = 0; i < objectsOnBoard.Count; i++)
             {
@@ -323,11 +349,11 @@ namespace PortalSokoban
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
-                    { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'P', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
+                    { 'W', 'G', 'G', 'G', BOX, 'G', 'G', 'P', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
-                    { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
+                    { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'B', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
                     { 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'},
@@ -351,6 +377,7 @@ namespace PortalSokoban
                         objectsOnBoard.Add(new Player(x, y, this, c));
                         break;
                     case BOX:
+                        objectsOnBoard.Add(new Box(x, y, this, c));
                         break;
 
                     default:

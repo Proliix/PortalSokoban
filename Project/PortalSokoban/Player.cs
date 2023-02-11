@@ -23,7 +23,7 @@ public class Player : BoardObject, IReciveInput
     private int direction;
     private readonly Texture2D[] playerSprites;
 
-    public Player(int x, int y, Board board, ContentManager c) : base(x, y, board)
+    public Player(int x, int y, Board board, ContentManager c) : base(x, y, board,c)
     {
         playerSprites = new Texture2D[4];
         isAlive = true;
@@ -51,7 +51,7 @@ public class Player : BoardObject, IReciveInput
                 BoardObject box = board.GetBoardObjAtPos(newXPos, newYPos);
                 if (box != null)
                 {
-                    if (box.AttemptMove(newXPos + xMove, newYPos + yMove))
+                    if (box.AttemptMove(xMove,yMove))
                     {
                         DoMove(xMove, yMove);
                         return true;

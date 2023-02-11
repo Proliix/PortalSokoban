@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace PortalSokoban
         protected Texture2D sprite;
         protected Board board;
 
-        public BoardObject(int xPos, int yPos, Board board)
+        public BoardObject(int xPos, int yPos, Board board, ContentManager c)
         {
             this.yPos = yPos;
             this.xPos = xPos;
