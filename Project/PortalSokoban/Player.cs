@@ -12,7 +12,7 @@ using PortalSokoban;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Reflection.Metadata;
 
-public class Player : BoardObject,IReciveInput
+public class Player : BoardObject, IReciveInput
 {
     private const int up = 0;
     private const int right = 1;
@@ -31,7 +31,7 @@ public class Player : BoardObject,IReciveInput
         InputSystem.INSTANCE.Add(this);
         #region
         // Load all textures
-        playerSprites[0] = c.Load<Texture2D>("sprite/portal_player_idle_up"); 
+        playerSprites[0] = c.Load<Texture2D>("sprite/portal_player_idle_up");
         playerSprites[1] = c.Load<Texture2D>("sprite/portal_player_idle_right");
         playerSprites[2] = c.Load<Texture2D>("sprite/portal_player_idle_down");
         playerSprites[3] = c.Load<Texture2D>("sprite/portal_player_idle_left");
@@ -41,7 +41,32 @@ public class Player : BoardObject,IReciveInput
 
     public override bool AttemptMove(int xMove, int yMove)
     {
-        throw new NotImplementedException();
+        int newXPos = xPos + xMove;
+        int newYPos = yPos + yMove;
+        char objAtPos = board.GetObjOnPoint(newXPos, newYPos);
+
+        switch (objAtPos)
+        {
+            case Board.BOX:
+                BoardObject box = board.GetBoardObjAtPos(newXPos, newYPos);
+                if (box != null)
+                {
+                    if (box.AttemptMove(newXPos + xMove, newYPos + yMove))
+                    {
+                        DoMove(xMove, yMove);
+                        return true;
+                    }
+                }
+                return false;
+            case Board.GROUND:
+            case Board.KNAPP:
+                DoMove(xMove, yMove);
+                return true;
+
+            default:
+                return false;
+        }
+
     }
 
     public override void Draw(SpriteBatch batch, Vector2 camOffset)
@@ -56,19 +81,19 @@ public class Player : BoardObject,IReciveInput
         switch (inputNum)
         {
             case InputSystem.UP:
-                DoMove(0, -1);
+                AttemptMove(0, -1);
                 sprite = playerSprites[up];
-            break;
+                break;
             case InputSystem.DOWN:
-                DoMove(0, 1);
+                AttemptMove(0, 1);
                 sprite = playerSprites[down];
                 break;
             case InputSystem.LEFT:
-                DoMove(-1, 0);
+                AttemptMove(-1, 0);
                 sprite = playerSprites[left];
                 break;
             case InputSystem.RIGHT:
-                DoMove(1, 0);
+                AttemptMove(1, 0);
                 sprite = playerSprites[right];
                 break;
             default:

@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 //using NUnit.Framework;
 using System;
 using SharpDX.Direct3D9;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 /*
  *                                                                                                  ████████████████████████████████████
  *                                                                                                  ██                                ██
@@ -257,9 +258,59 @@ namespace PortalSokoban
 
                 ints[x, y] = rand.Next(0, maxRandom);
                 debugString += "{" + ints[x, y] + "}";
+
+                if (i + 1 == xSize * ySize)
+                    Console.WriteLine(debugString);
             }
 
             return ints;
+        }
+
+        public char GetObjOnPoint(int x, int y)
+        {
+            return GRID[x, y];
+        }
+
+        public bool MoveTowardDir(int xPos,int yPos,int xDir,int yDir)
+        {
+            int newXPos = xPos + xDir;
+            int newYPos = yPos + yDir;
+
+            if(newXPos >= GRID.GetLength(0) || newYPos >= GRID.GetLength(1))
+                return false;
+
+            char c1 = GRID[xPos, yPos];
+            char c2 = GRID[newXPos,newYPos];
+            GRID[newXPos,newYPos] = c1;
+            GRID[xPos,yPos] = c2;
+
+            #region Debug send board to console
+            int y = -1;
+            string debugString = "";
+            for (int i = 0; i < gridWidthX * gridHeightY; i++)
+            {
+                int x = i % gridWidthX;
+                if (x == 0) { y += 1; Console.WriteLine(debugString); debugString = ""; }
+                debugString += "{" + GRID[x, y] + "}";
+
+                if (i + 1 == gridWidthX * gridHeightY)
+                    Console.WriteLine(debugString);
+            }
+            #endregion
+
+            return true;
+
+        }
+
+        public BoardObject GetBoardObjAtPos(int x, int y) 
+        {
+            for (int i = 0; i < objectsOnBoard.Count; i++)
+            {
+                Vector2 pos = objectsOnBoard[i].GetPos();
+                if (pos.X == x && pos.Y == y)
+                    return objectsOnBoard[i];
+            }
+            return null;
         }
 
         private char[,] createLvl1()

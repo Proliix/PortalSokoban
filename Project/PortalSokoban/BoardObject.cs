@@ -24,10 +24,16 @@ namespace PortalSokoban
             drawPos = new Vector2(xPos * Board.CELL_WIDTH, yPos * Board.CELL_HEIGHT);
         }
 
+        public Vector2 GetPos()
+        { return new Vector2(xPos,yPos); }
+
         protected void DoMove(int xMove, int yMove)
         {
-            xPos += xMove;
-            yPos += yMove;
+            if (board.MoveTowardDir(xPos, yPos, xMove, yMove))
+            {
+                xPos += xMove;
+                yPos += yMove;
+            }
         }
         public abstract bool AttemptMove(int xMove, int yMove);
         public abstract void Draw(SpriteBatch batch, Vector2 camOffset);
